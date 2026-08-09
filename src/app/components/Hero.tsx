@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/app/components/ui/button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import bannerImage from 'figma:asset/96000701920fe82ad6c580e5ce7ceb870b51f893.png';
+import bannerImage from '../../../assets/96000701920fe82ad6c580e5ce7ceb870b51f893.png';
 
 export function Hero() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', destination: '' });
