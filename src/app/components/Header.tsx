@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import logo from '@/imports/United_Logo.png';
@@ -6,6 +7,8 @@ import logo from '@/imports/United_Logo.png';
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +19,21 @@ export function Header() {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false);
+  };
+
+  const goToServices = () => {
+    navigate('/services');
+    setIsMenuOpen(false);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -59,7 +72,7 @@ export function Header() {
             <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               Home
             </button>
-            <button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+            <button onClick={goToServices} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               Services
             </button>
             <button onClick={() => scrollToSection('destinations')} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
@@ -94,7 +107,7 @@ export function Header() {
             <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
               Home
             </button>
-            <button onClick={() => scrollToSection('services')} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+            <button onClick={goToServices} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
               Services
             </button>
             <button onClick={() => scrollToSection('destinations')} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">

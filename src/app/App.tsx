@@ -1,3 +1,4 @@
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/app/components/ui/sonner';
 import { Header } from '@/app/components/Header';
 import { Hero } from '@/app/components/Hero';
@@ -11,8 +12,9 @@ import { Testimonials } from '@/app/components/Testimonials';
 import { CTABanner } from '@/app/components/CTABanner';
 import { Contact } from '@/app/components/Contact';
 import { Footer } from '@/app/components/Footer';
+import { ServicesPage } from '@/app/pages/ServicesPage';
 
-export default function App() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -29,7 +31,18 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <Toaster />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/services" element={<ServicesPage />} />
+      </Routes>
+      <Toaster />
+    </HashRouter>
   );
 }
