@@ -13,6 +13,7 @@ import { CTABanner } from '@/app/components/CTABanner';
 import { Contact } from '@/app/components/Contact';
 import { Footer } from '@/app/components/Footer';
 import { ServicesPage } from '@/app/pages/ServicesPage';
+import { DestinationsPage } from '@/app/pages/DestinationsPage';
 
 function HomePage() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/destinations" element={<DestinationsPage />} />
       </Routes>
       <Toaster />
     </HashRouter>
