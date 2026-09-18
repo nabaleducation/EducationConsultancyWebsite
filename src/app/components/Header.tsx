@@ -36,6 +36,12 @@ export function Header() {
     window.scrollTo(0, 0);
   };
 
+  const goToDestinations = () => {
+    navigate('/destinations');
+    setIsMenuOpen(false);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <header className={`bg-white sticky top-0 z-50 transition-shadow ${isScrolled ? 'shadow-md' : 'shadow-sm'}`}>
       {/* Top Bar */}
@@ -75,7 +81,7 @@ export function Header() {
             <button onClick={goToServices} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               Services
             </button>
-            <button onClick={() => scrollToSection('destinations')} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+            <button onClick={goToDestinations} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
               Destinations
             </button>
             <button onClick={() => scrollToSection('process')} className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
